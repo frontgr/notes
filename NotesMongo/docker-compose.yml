@@ -1,0 +1,33 @@
+version: '3.1'
+
+services:
+
+  notes-mongo:
+    image: mongo
+    restart: always
+    ports:
+      - 27018:27017
+    container_name: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: notesmongo
+      MONGO_INITDB_ROOT_PASSWORD: password
+    networks:
+      - default
+
+
+  notes-mongo-express:
+    image: mongo-express:0.54.0
+    restart: always
+    ports:
+      - 3061:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: notesmongo
+      ME_CONFIG_MONGODB_ADMINPASSWORD: password
+      ME_CONFIG_MONGODB_URL: mongodb://notesmongo:password@mongo:27017/
+    networks:
+      - default
+
+networks:
+  default:
+    external:
+      name: notes_network
