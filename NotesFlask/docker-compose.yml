@@ -1,6 +1,0 @@
-services:
-  web:
-    build: ""
-    command: gunicorn --bind 0.0.0.0:5001 wsgi:app
-    ports:
-      - '8085:8084'

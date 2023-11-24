@@ -1,4 +1,4 @@
-from main import app
+from NotesFlaskApp import app
 
 if __name__ == "__main__":
     app.run()

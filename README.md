@@ -1,4 +1,10 @@
-# notes
-Note app.
+# *Note App*
 
-MongoDB is DOCKERized. Thus DOCKER installed on your PC is required to access the database.
+## *Start*
+To run this app, run commands listed below:
+
+````
+docker network create notes_network
+docker compose up -d 
+````
+Backend is binded to port: 8085.
