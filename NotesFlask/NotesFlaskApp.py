@@ -5,7 +5,7 @@ import MongoAccess as monots
 app = Flask(__name__)
 
 
-@app.route('/get-notes')
+@app.route('/get-notes', methods=['GET'])
 def get_notes():
     return json.dumps(monots.give_me_my_notes())
 
@@ -18,7 +18,7 @@ def add_note():
         return {'status': 'error', 'message': 'Oops, something went wrong!'}
 
 
-@app.route('/clear-all')
+@app.route('/clear-all', methods=['DELETE'])
 def clear_all():
     return monots.clean_this_mess_up()
 
