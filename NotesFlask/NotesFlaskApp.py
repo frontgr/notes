@@ -1,8 +1,10 @@
 from flask import Flask, request
 import json
+from flask_cors import CORS
 import MongoAccess as monots
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route('/get-notes', methods=['GET'])
