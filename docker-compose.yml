@@ -14,9 +14,11 @@ services:
     image: mongo
     restart: always
     ports:
-      - 27018:27017
+      - '27018:27017'
     expose:
-      - 27018
+      - '27018'
+    volumes:
+      - ./data:/data/db
     container_name: mongo
     environment:
       MONGO_INITDB_ROOT_USERNAME: notesmongo
