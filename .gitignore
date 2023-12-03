@@ -10,6 +10,7 @@ lerna-debug.log*
 node_modules
 .DS_Store
 dist
+data/*
 dist-ssr
 coverage
 *.local
@@ -26,3 +27,10 @@ coverage
 *.njsproj
 *.sln
 *.sw?
+data/collection-4--1976326388122765069.wt
+data/index-6--1976326388122765069.wt
+data/WiredTiger.turtle
+data/WiredTiger.wt
+data/diagnostic.data/metrics.2023-12-03T18-24-50Z-00000
+data/diagnostic.data/metrics.interim
+data/journal/WiredTigerLog.0000000002

@@ -1,15 +1,41 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 
 const notes = ref([]);
 const newNote = ref("");
 newNote.value = "";
-const addNote = () => {
+const addNote = async () => {
   if (newNote.value) {
-    notes.value.push(newNote.value);
-    newNote.value = "";
+    const note = { content: newNote.value };
+    try {
+      const response = await fetch("http://localhost:8085/add-note", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(note),
+      });
+      if (response.ok) {
+        notes.value.push(newNote.value);
+        newNote.value = "";
+      } else {
+        console.error("Failed to add note");
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
 };
+
+onMounted(async () => {
+  try {
+    const response = await fetch("http://localhost:8085/get-notes");
+    const data = await response.json();
+    notes.value = data.map((item) => item.content);
+  } catch (error) {
+    console.error(error);
+  }
+});
 </script>
 
 <template>
