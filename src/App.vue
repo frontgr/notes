@@ -26,7 +26,17 @@ const addNote = async () => {
     }
   }
 };
-
+const deleteNotes = async () => {
+  try {
+    const response = await fetch("http://localhost:8085/clear-all", {
+      method: "DELETE",
+    });
+    notes.value = [];
+    newNote.value = "";
+  } catch (error) {
+    console.error(error);
+  }
+};
 onMounted(async () => {
   try {
     const response = await fetch("http://localhost:8085/get-notes");
@@ -41,9 +51,12 @@ onMounted(async () => {
 <template>
   <div class="container">
     <textarea v-model="newNote" placeholder="Enter a note"></textarea>
-    <button @click="addNote">Add Note</button>
+    <div class="btn-container">
+      <button @click="addNote">Add Note</button>
+      <button @click="deleteNotes">Delete Notes</button>
+    </div>
     <ul>
-      <li v-for="note in notes" :key="note">{{ note }}</li>
+      <li v-for="note in notes" :key="note" class="note-item">{{ note }}</li>
     </ul>
   </div>
 </template>
@@ -58,6 +71,13 @@ onMounted(async () => {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
 textarea {
   width: calc(100% - 10px);
   height: 90px;
@@ -69,14 +89,30 @@ textarea {
 }
 
 button {
-  display: block;
+  display: inline-block;
   width: 100%;
   padding: 10px;
-  background-color: #4caf50;
+  background-color: #87af4c;
   color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+button:nth-child(2) {
+  background-color: #af5b4c;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 5px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 ul {
