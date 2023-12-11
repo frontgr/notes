@@ -2,20 +2,19 @@ from Crypto.Cipher import AES
 from Crypto.Random import get_random_bytes
 
 
-def aes_encryption(data):
+class DataProtection:
 
-    # data_to_encrypt = data['content'].encode()
-    key = get_random_bytes(16)
-    cipher = AES.new(key, AES.MODE_EAX)
-    nonce = cipher.nonce
+    def aes_encryption(self, data):
 
-    ciphertext = cipher.encrypt(data)
+        key = get_random_bytes(16)
+        cipher = AES.new(key, AES.MODE_EAX)
+        nonce = cipher.nonce
 
-    # data['content'] = ciphertext
-    return ciphertext, key, nonce
+        ciphertext = cipher.encrypt(data)
 
+        return ciphertext, key, nonce
 
-def aes_decryption(note_to_decrypt, key, nonce):
+    def aes_decryption(self, note_to_decrypt, key, nonce):
 
-    cipher2 = AES.new(key, AES.MODE_EAX, nonce=nonce)
-    return cipher2.decrypt(note_to_decrypt).decode('utf-8')
+        cipher2 = AES.new(key, AES.MODE_EAX, nonce=nonce)
+        return cipher2.decrypt(note_to_decrypt).decode('utf-8')
