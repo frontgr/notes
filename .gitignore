@@ -17,6 +17,7 @@ coverage
 *.local
 venv
 NotesFlask/__pycache__
+.env
 
 /cypress/videos/
 /cypress/screenshots/

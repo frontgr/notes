@@ -5,8 +5,12 @@ services:
     build:
       dockerfile: NotesFlask/Dockerfile
     command: gunicorn --bind 0.0.0.0:5001 wsgi:app
+    env_file:
+      - .env
     ports:
       - '8085:5001'
+
+    container_name: api
     networks:
       - default
 
@@ -20,19 +24,19 @@ services:
     volumes:
       - ./data:/data/db
     container_name: mongo
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: notesmongo
-      MONGO_INITDB_ROOT_PASSWORD: password
+    env_file:
+      - .env
     networks:
       - default
+
   vue-app:
     build:
       context: .
       dockerfile: ./VueNotes/Dockerfile
     ports:
       - 4000:4000
-    volumes:
-      - .:/app
+    env_file:
+      - .env
 
 networks:
   default:

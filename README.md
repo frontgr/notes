@@ -1,23 +1,32 @@
 # *Note App API*
 
 ## *Where to start*
-To run notes app, install the Docker, then you will need to create a Docker Network (only once) for containers to communicate, and build the containers itself:
+### Setup
+Create .env file from .env.default then setup username and password for MongoDB
 
-````
+If it necessary change APP_API_LOCATION and APP_DB_LOCATION.
+
+Create docker network
+
+```
 docker network create notes_network
+```
+
+### Build application
+
+````
 docker-compose up --build -d
 ````
 
-## In case of changed source code: 
-Manually **DOWN** and **BUILD** the containers:
+### In case of changed source code: 
+Manually **DOWN** and **REBUILD** the containers:
 ````
 docker-compose down
 docker-compose up --build -d
 ````
 
-## In case if you just need to down the containers and then up (without rebuilding) them again
+## In case if you just need to run application without rebuild do not use --build key
 ````
-docker-compose down
 docker-compose up -d
 ````
 
