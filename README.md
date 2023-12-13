@@ -4,7 +4,7 @@
 ### Setup
 Create .env file from .env.default then setup username and password for MongoDB
 
-If it necessary change APP_API_LOCATION and APP_DB_LOCATION.
+If it necessarily, change APP_API_LOCATION and APP_DB_LOCATION.
 
 Create docker network
 
