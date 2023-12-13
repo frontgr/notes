@@ -16,6 +16,7 @@ dist-ssr
 coverage
 *.local
 venv
+NotesFlask/__pycache__
 
 /cypress/videos/
 /cypress/screenshots/

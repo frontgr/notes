@@ -1,0 +1,10 @@
+pip>=23.3.1
+requests
+gunicorn
+Flask>=3.0.0
+wheel==0.41.3
+flask-cors
+pymongo>4.6.0
+pycryptodome
+Crypto
+
