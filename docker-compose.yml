@@ -1,4 +1,4 @@
-version: '3.1'
+version: "3.1"
 
 services:
   web:
@@ -8,7 +8,7 @@ services:
     env_file:
       - .env
     ports:
-      - '8085:5001'
+      - "8085:5001"
 
     container_name: api
     networks:
@@ -18,9 +18,9 @@ services:
     image: mongo
     restart: always
     ports:
-      - '27018:27017'
+      - "27018:27017"
     expose:
-      - '27018'
+      - "27018"
     volumes:
       - ./data:/data/db
     container_name: mongo
