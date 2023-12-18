@@ -48,9 +48,12 @@ class Database:
             return False
 
     def clean_this_mess_up(self):
-        collection = self.db['StoredNotes']
-        collection.drop()
-
+        try:
+            collection = self.db['StoredNotes']
+            collection.drop()
+            return True
+        except:
+            return False
 
 
 

@@ -15,7 +15,7 @@ AESClass = DataProtection()
 def add_note():
 
     if MongoClass.user_input(AESClass.aes_encryption(request.get_json()['content'].encode())):
-        return {'status': 'Your note has been added!'}
+        return {'status': 'ok', 'message': 'Your note has been added!'}
     else:
         return {'status': 'error', 'message': 'Oops, something went wrong!'}
 
@@ -27,7 +27,10 @@ def get_notes():
 
 @app.route('/clear-all', methods=['DELETE'])
 def clear_all():
-    return MongoClass.clean_this_mess_up()
+    if MongoClass.clean_this_mess_up():
+        return {'status': 'Ok', 'message': 'Your notes have been cleared!'}
+    else:
+        return {'status': 'error', 'message': 'Oops, something went wrong!'}
 
 
 if __name__ == "__main__":
