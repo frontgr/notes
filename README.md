@@ -2,7 +2,7 @@
 
 ## *Where to start*
 ### Setup
-Create .env file from .env.default then setup username and password for MongoDB
+Create .env file from a copy of .env.default then setup username and password for MongoDB
 
 If it necessarily, change APP_API_LOCATION and APP_DB_LOCATION.
 
