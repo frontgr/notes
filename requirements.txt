@@ -7,4 +7,3 @@ flask-cors
 pymongo>4.6.0
 pycryptodome
 Crypto
-

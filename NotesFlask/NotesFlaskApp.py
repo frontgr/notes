@@ -27,8 +27,9 @@ def get_notes():
 
 @app.route('/clear-all', methods=['DELETE'])
 def clear_all():
-    return MongoClass.clean_this_mess_up()
 
+    if MongoClass.clean_this_mess_up():
+        return {'status': 'All notes have been deleted!'}
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=8084)
