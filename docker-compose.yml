@@ -1,0 +1,44 @@
+version: "3.1"
+
+services:
+  web:
+    build:
+      dockerfile: NotesFlask/Dockerfile
+    command: gunicorn --bind 0.0.0.0:5001 wsgi:app
+    env_file:
+      - .env
+    ports:
+      - "8085:5001"
+
+    container_name: api
+    networks:
+      - default
+
+  notes-mongo:
+    image: mongo
+    restart: always
+    ports:
+      - "27018:27017"
+    expose:
+      - "27018"
+    volumes:
+      - ./data:/data/db
+    container_name: mongo
+    env_file:
+      - .env
+    networks:
+      - default
+
+  vue-app:
+    build:
+      context: .
+      dockerfile: ./VueNotes/Dockerfile
+    ports:
+      - 4000:4000
+    env_file:
+      - .env
+
+networks:
+  default:
+    external:
+      name: notes_network
