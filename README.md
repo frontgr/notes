@@ -1,42 +1,43 @@
-# _Note App API_
+# notes
 
-## _Where to start_
+Simple note taking fullstack app. 
 
-### Setup
+Project without deployment, but you can run it locally simple with [Docker](https://frontgr.github.io/docs/docker/docker/) with one command. 
+![image](https://github.com/frontgr/notes/assets/52705623/555b6519-5cde-4a1d-8f71-1caa88d58710)
 
-Create .env file from .env.default then setup username and password for MongoDB
+---
 
-If it necessarily, change APP_API_LOCATION and APP_DB_LOCATION.
+### Technologies Used
 
-Create docker network
+1. Vue
+2. Docker
+3. MongoDB
+4. Flask
+
+---
+
+## How to run the app? 
+
+Create `.env` file from `.env.default` then setup username and password for MongoDB. If it necessarily, change `APP_API_LOCATION` and `APP_DB_LOCATION`.
+
+Create docker network:
 
 ```yaml
 docker network create notes_network
 ```
 
-### Build application
+Then, build the application: 
 
 ```yaml
 docker-compose up --build -d
 ```
 
-### In case of changed source code:
+---
 
-Manually **DOWN** and **REBUILD** the containers:
+### Formatting rules
 
-```yaml
-docker-compose down
-docker-compose up --build -d
-```
+We use Prettier for formatting our text. See more about our configuration [here](https://frontgr.github.io/docs/prettierrc/prettierrc/).
 
-## In case if you just need to run application without rebuild do not use --build key
+---
 
-```yaml
-docker-compose up -d
-```
-
-# To test this API
-
-You can use [Postman](https://learning.postman.com/docs/introduction/overview/), for example.
-
-Hope it has been helpful!
+Project has [MIT License](https://github.com/frontgr/notes/blob/main/LICENSE).
